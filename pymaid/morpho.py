@@ -436,7 +436,7 @@ def cut_neuron( skdata, cut_node ):
 
    return neuron_dist, neuron_prox
 
-def synapse_root_distances(skdata, remote_instance, pre_skid_filter = [], post_skid_filter = [] ):
+def synapse_root_distances(skdata, remote_instance, pre_skid_filter = [], post_skid_filter = [], project_id = 1):
    """ Calculates geodesic (along the arbor) distance of synapses to root
    (i.e. soma)
 
@@ -447,6 +447,8 @@ def synapse_root_distances(skdata, remote_instance, pre_skid_filter = [], post_s
                         neurons will be processed
    post_skid_filter :   (optional) if provided, only synapses to these neurons
                         will be processed
+   project_id :         int (default = 1)
+                        ID of the CATMAID project
 
    Returns
    -------
@@ -471,7 +473,7 @@ def synapse_root_distances(skdata, remote_instance, pre_skid_filter = [], post_s
    w = np.sqrt( np.sum(( tn_coords[ ['x','y','z' ] ] - parent_coords[ ['x','y','z' ] ] ) **2, axis=1 )).tolist()
 
    #Get connector details
-   cn_details = get_connector_details (  skdata.connectors.connector_id.tolist() , remote_instance = remote_instance)
+   cn_details = get_connector_details (  skdata.connectors.connector_id.tolist() , remote_instance = remote_instance, project_id = project_id)
 
    list_of_parents = { n[0]: (n[1], n[3], n[4], n[5] ) for n in skdata[0] }
 
@@ -558,7 +560,6 @@ def calc_cable( skdata , smoothing = 1, remote_instance = None, project_id = 1):
    df.nodes.reset_index( inplace = True )
 
    #Return sum of all distances
-   
    return np.sum( w ) / 1000
 
 def calc_strahler_index( skdata ):

@@ -535,6 +535,8 @@ def get_3D_skeleton ( skids, remote_instance = None , connector_flag = 1, tag_fl
                         For some reason they are not part of /compact-json/,
                         so we have to retrieve them via /connectors/ and add
                         them to compact-json -> will give them connector type 3!
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
 
     Returns:
@@ -654,6 +656,8 @@ def get_arbor ( skids, remote_instance = None, node_flag = 1, connector_flag = 1
                         Values = 0 or 1. (optional, default = 1)
     tag_flag :          set if tags should be retrieved. Values = 0 or 1.
                         (optional, default = 1)
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns:
     --------
@@ -726,6 +730,8 @@ def get_partners_in_volume(skids, volume, remote_instance = None , threshold = 1
                         applied to the TOTAL number of synapses across all
                         neurons!
                         (optional, default = 1)
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
     min_size :          minimum node count of partner
                         (optional, default = 2 -> hide single-node partner)
     approximate :       boolean (default = False)
@@ -802,6 +808,8 @@ def get_partners (skids, remote_instance = None , threshold = 1, project_id = 1,
                         therefore filtered afterwards. This threshold is
                         applied to the total number of synapses.
                         (optional, default = 1)
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
     min_size :          minimum node count of partner
                         (optinal, default = 2 -> hide single-node partners!)
     filt :              list of strings (optional, default = [])
@@ -918,6 +926,8 @@ def get_names (skids, remote_instance = None, project_id = 1):
     skids :             list of skeleton ids
     remote_instance :   CATMAID instance; either pass directly to function or
                         define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns:
     -------
@@ -956,6 +966,8 @@ def get_node_user_details(treenode_ids, remote_instance = None, project_id = 1):
     treenode_ids :      list of treenode ids (can also be connector ids!)
     remote_instance :   CATMAID instance; either pass directly to function or
                         define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns:
     -------
@@ -1011,6 +1023,8 @@ def get_node_lists (skids, remote_instance = None, project_id = 1):
     skids :             list of skeleton ids
     remote_instance :   CATMAID instance; either pass directly to function or
                         define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns:
     -------
@@ -1250,6 +1264,8 @@ def get_connector_details (connector_ids, remote_instance = None, project_id = 1
                         from compact skeletons (get_3D_skeleton)
     remote_instance :   CATMAID instance; either pass directly to function
                         or define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns:
     -------
@@ -1305,6 +1321,8 @@ def get_review (skids, remote_instance = None, project_id = 1):
     skids :             list of skeleton ids
     remote_instance :   CATMAID instance; either pass directly to function
                         or define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns:
     -------
@@ -1357,6 +1375,8 @@ def get_neuron_annotation (skid, remote_instance = None, project_id = 1 ):
                         Single skeleton id.
     remote_instance :   CATMAID instance; either pass directly to function
                         or define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns:
     -------
@@ -1411,6 +1431,8 @@ def has_soma ( skids , remote_instance = None, project_id = 1 ):
     skids :             single skeleton id or list of skids
     remote_instance :   CATMAID instance; either pass directly to function
                         or define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns
     -------
@@ -1446,6 +1468,8 @@ def skid_exists( skid, remote_instance = None, project_id = 1 ):
     skid :              single skeleton id
     remote_instance :   CATMAID instance; either pass directly to function
                         or define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns:
     -------
@@ -1475,6 +1499,8 @@ def get_annotation_id( annotations, remote_instance = None, project_id = 1, allo
     annotations :       single annotations or list of multiple annotations
     remote_instance :   CATMAID instance; either pass directly to function
                         or define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
     allow_partial :     boolean
                         If True, will allow partial matches
 
@@ -1537,6 +1563,8 @@ def get_skids_by_name(tag, remote_instance = None, allow_partial = True, project
     allow_partial :     if True, partial matches are returned too
     remote_instance :   CATMAID instance; either pass directly to function
                         or define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns:
     -------
@@ -1584,6 +1612,8 @@ def get_skids_by_annotation( annotations, remote_instance = None, project_id = 1
     annotations :          single annotation or list of multiple annotations
     remote_instance :      CATMAID instance; either pass directly to function
                            or define globally as 'remote_instance'
+    project_id :           int (default = 1)
+                           ID of the CATMAID project
     allow_partial :        allow partial match of annotation
 
     Returns:
@@ -1638,6 +1668,8 @@ def get_annotations_from_list(skid_list, remote_instance = None, project_id = 1 
     skid_list :         list of skeleton ids
     remote_instance :   CATMAID instance; either pass directly to function
                         or define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns:
     --------
@@ -1685,6 +1717,8 @@ def add_tags ( node_list, tags, node_type, remote_instance = None, project_id = 
                         what you want to tag
     remote_instance :   CATMAID instance; either pass directly to function or
                         define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns confirmations from Catmaid server
     """
@@ -1723,6 +1757,8 @@ def add_annotations ( skid_list, annotations, remote_instance = None, project_id
     annotations :       list of annotation(s) to add to provided skeleton ids
     remote_instance :   CATMAID instance; either pass directly to function
                         or define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns nothing
     """
@@ -1765,6 +1801,8 @@ def get_review_details ( skid_list, remote_instance = None, project_id = 1):
     skid_list :         list of skeleton ids to check
     remote_instance :   CATMAID instance; either pass directly to function
                         or define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns:
     -------
@@ -2029,6 +2067,8 @@ def get_skeleton_list( remote_instance = None, user=None, node_count=1, start_da
                         Only consider neurons created after.
     end_date :          list of integers [year, month, day]
                         Only consider neurons created before.
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns:
     list :              [ skid, skid, skid ]
@@ -2069,6 +2109,8 @@ def get_history( remote_instance = None, project_id = 1, start_date = '2016-10-2
     ----------
     remote_instance :   CATMAID instance; either pass directly to function
                         or define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
     user :              single user_id
     start_date :        created after, date needs to be (year,month,day)
                         format - e.g. '2016-10-29'
@@ -2153,6 +2195,8 @@ def get_neurons_in_volume ( left, right, top, bottom, z1, z2, remote_instance = 
                                  in nm, not pixels.
     remote_instance :            CATMAID instance; either pass directly to
                                  function or define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns:
     --------
@@ -2328,6 +2372,8 @@ def get_volume( volume_name, remote_instance = None, project_id = 1 ):
                         name of the volume to import - must be EXACT!
     remote_instance :   CATMAID instance; either pass directly to function or
                         define globally as 'remote_instance'
+    project_id :        int (default = 1)
+                        ID of the CATMAID project
 
     Returns:
     -------
